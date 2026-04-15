@@ -13,19 +13,19 @@ const products = [
 // ========== MARCAS E CATEGORIAS ==========
 const marcas = [
     {
-        nome: "KIMASTER",
-        imagem: "images/kimaster-logo.png",
+        nome: "",
+        imagem: "images/Kimaster150x150.png",
         fallbackIcon: "fas fa-mobile-alt",
         categorias: [
-            { nome: "Fones", imagem: "images/kimaster-fones.png", icone: "fas fa-headphones", count: 24 },
-            { nome: "Capas", imagem: "images/kimaster-capas.png", icone: "fas fa-mobile-alt", count: 18 },
-            { nome: "Cabos", imagem: "images/kimaster-cabos.png", icone: "fas fa-plug", count: 15 },
-            { nome: "Carregadores", imagem: "images/kimaster-carregadores.png", icone: "fas fa-bolt", count: 12 }
+            { nome: "Fones", imagem: "images/k25.png", icone: "fas fa-headphones", count: 24 },
+            { nome: "Capas", imagem: "images/k450-capa_02.jpg", icone: "fas fa-mobile-alt", count: 18 },
+            { nome: "Cabos", imagem: "images/k450.png", icone: "fas fa-plug", count: 15 },
+            { nome: "Carregadores", imagem: "images/k510.png", icone: "fas fa-bolt", count: 12 }
         ]
     },
     {
-        nome: "FAM",
-        imagem: "images/fam-logo.png",
+        nome: "",
+        imagem: "images/KNUP150.png",
         fallbackIcon: "fas fa-headphones",
         categorias: [
             { nome: "Fones Bluetooth", imagem: "images/fam-fones.png", icone: "fas fa-headphones", count: 30 },
@@ -34,20 +34,20 @@ const marcas = [
             { nome: "Carregadores", imagem: "images/fam-carregadores.png", icone: "fas fa-bolt", count: 18 }
         ]
     },
-    {
-        nome: "BMAX",
-        imagem: "images/bmax-logo.png",
-        fallbackIcon: "fas fa-bolt",
+   {
+        nome: "",
+        imagem: "images/lehmox150x150.png",
+        fallbackIcon: "fas fa-mobile-screen",
         categorias: [
-            { nome: "Carregadores", imagem: "images/bmax-carregadores.png", icone: "fas fa-bolt", count: 20 },
-            { nome: "Power Banks", imagem: "images/bmax-powerbanks.png", icone: "fas fa-battery-full", count: 12 },
-            { nome: "Cabos", imagem: "images/bmax-cabos.png", icone: "fas fa-plug", count: 18 },
-            { nome: "Fones", imagem: "images/bmax-fones.png", icone: "fas fa-headphones", count: 15 }
+            { nome: "Smartwatches", imagem: "images/knup-smartwatch.png", icone: "fas fa-clock", count: 12 },
+            { nome: "Fones Gamer", imagem: "images/knup-fones.png", icone: "fas fa-headphones", count: 20 },
+            { nome: "Teclados", imagem: "images/knup-teclados.png", icone: "fas fa-keyboard", count: 15 },
+            { nome: "Mouses", imagem: "images/knup-mouses.png", icone: "fas fa-mouse", count: 18 }
         ]
     },
     {
-        nome: "PEINING",
-        imagem: "images/peining-logo.png",
+        nome: "",
+        imagem: "images/kingo150.png",
         fallbackIcon: "fas fa-mobile-screen",
         categorias: [
             { nome: "Películas", imagem: "images/peining-peliculas.png", icone: "fas fa-mobile-screen", count: 25 },
@@ -57,8 +57,41 @@ const marcas = [
         ]
     },
     {
-        nome: "KNUP",
-        imagem: "images/knup-logo.png",
+        nome: "",
+        imagem: "images/lehmox150x150.png",
+        fallbackIcon: "fas fa-clock",
+        categorias: [
+            { nome: "Smartwatches", imagem: "images/knup-smartwatch.png", icone: "fas fa-clock", count: 12 },
+            { nome: "Fones Gamer", imagem: "images/knup-fones.png", icone: "fas fa-headphones", count: 20 },
+            { nome: "Teclados", imagem: "images/knup-teclados.png", icone: "fas fa-keyboard", count: 15 },
+            { nome: "Mouses", imagem: "images/knup-mouses.png", icone: "fas fa-mouse", count: 18 }
+        ]
+    },
+    {
+        nome: "",
+        imagem: "images/10-1HORA-150x150.png",
+        fallbackIcon: "fas fa-clock",
+        categorias: [
+            { nome: "Smartwatches", imagem: "images/knup-smartwatch.png", icone: "fas fa-clock", count: 12 },
+            { nome: "Fones Gamer", imagem: "images/knup-fones.png", icone: "fas fa-headphones", count: 20 },
+            { nome: "Teclados", imagem: "images/knup-teclados.png", icone: "fas fa-keyboard", count: 15 },
+            { nome: "Mouses", imagem: "images/knup-mouses.png", icone: "fas fa-mouse", count: 18 }
+        ]
+    },
+    {
+        nome: "",
+        imagem: "images/9-Kapbom-150x150.png",
+        fallbackIcon: "fas fa-clock",
+        categorias: [
+            { nome: "Smartwatches", imagem: "images/knup-smartwatch.png", icone: "fas fa-clock", count: 12 },
+            { nome: "Fones Gamer", imagem: "images/knup-fones.png", icone: "fas fa-headphones", count: 20 },
+            { nome: "Teclados", imagem: "images/knup-teclados.png", icone: "fas fa-keyboard", count: 15 },
+            { nome: "Mouses", imagem: "images/knup-mouses.png", icone: "fas fa-mouse", count: 18 }
+        ]
+    },
+    {
+        nome: "",
+        imagem: "images/Fam150x150.png",
         fallbackIcon: "fas fa-clock",
         categorias: [
             { nome: "Smartwatches", imagem: "images/knup-smartwatch.png", icone: "fas fa-clock", count: 12 },
@@ -67,6 +100,7 @@ const marcas = [
             { nome: "Mouses", imagem: "images/knup-mouses.png", icone: "fas fa-mouse", count: 18 }
         ]
     }
+
 ];
 
 let currentFilter = "TODOS";
