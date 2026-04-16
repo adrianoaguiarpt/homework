@@ -5,6 +5,147 @@
     box-sizing: border-box;
 }
 
+/* ========================================
+   CARROSSEL DE MARCAS (SETAS FIXAS, MARCAS ROLAM)
+   ======================================== */
+
+/* Container principal - posição relativa para as setas */
+.marcas-carrossel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    background: transparent;
+}
+
+/* Wrapper do carrossel - permite rolagem */
+.marcas-carrossel-wrapper {
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Esconde a barra de rolagem */
+.marcas-carrossel-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* Container flexível dos itens (as marcas) */
+.marcas-carrossel {
+    display: flex;
+    gap: 20px;
+    padding: 10px 50px; /* Espaço para as setas não cobrirem */
+    min-width: min-content;
+}
+
+/* Cada item (marca) não encolhe */
+.marcas-carrossel .menu-item {
+    flex-shrink: 0;
+}
+
+/* Botões de navegação (setas) - FIXOS */
+.carrossel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    background: #0a192f;
+    border: 2px solid #00b4d8;
+    border-radius: 50%;
+    color: #00b4d8;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carrossel-btn:hover {
+    background: #00b4d8;
+    color: #0a192f;
+    transform: translateY(-50%) scale(1.08);
+    box-shadow: 0 6px 18px rgba(0, 180, 216, 0.3);
+}
+
+.carrossel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Posição das setas - DENTRO do container */
+.carrossel-btn.prev {
+    left: 5px;
+}
+
+.carrossel-btn.next {
+    right: 5px;
+}
+
+/* Esconde botões quando não há rolagem */
+.carrossel-btn.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* ========== RESPONSIVO ========== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .carrossel-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+    
+    .marcas-carrossel {
+        padding: 10px 45px;
+        gap: 18px;
+    }
+}
+
+/* Celular */
+@media (max-width: 768px) {
+    .carrossel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .marcas-carrossel {
+        padding: 10px 40px;
+        gap: 15px;
+    }
+    
+    .carrossel-btn.prev {
+        left: 2px;
+    }
+    
+    .carrossel-btn.next {
+        right: 2px;
+    }
+}
+
+/* Celular pequeno */
+@media (max-width: 480px) {
+    .carrossel-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .marcas-carrossel {
+        padding: 10px 35px;
+        gap: 12px;
+    }
+}
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: #f5f7fc;
@@ -49,6 +190,10 @@ body {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+.logo-area a {
+    text-decoration: none;
 }
 
 .logo-area h1 {
@@ -358,7 +503,7 @@ body {
     height: 300px;
     object-fit: cover;
     border-radius: 20px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
 }
 
@@ -372,6 +517,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin: 40px 0 25px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .section-title {
@@ -411,6 +558,19 @@ body {
     border-color: #00b4d8;
 }
 
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #dc2626;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px;
+    z-index: 2;
+}
+
 .product-img {
     width: 120px;
     height: 120px;
@@ -438,6 +598,9 @@ body {
     font-size: 1rem;
     margin-bottom: 8px;
     font-weight: 600;
+    min-height: 48px;
+    display: -webkit-box;
+    overflow: hidden;
 }
 
 .price {
@@ -452,6 +615,7 @@ body {
     text-decoration: line-through;
     color: #999;
     margin-right: 8px;
+    font-weight: normal;
 }
 
 .btn-buy {
@@ -580,62 +744,143 @@ footer {
     background: #128C7E;
 }
 
-/* ========== RESPONSIVO ========== */
+/* ========================================
+   PRODUTOS - 4 POR LINHA EM TODOS DISPOSITIVOS
+   ======================================== */
+
+/* Computador / Desktop / Tablet / Celular - TODOS com 4 colunas */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+/* Tablet - mantém 4 colunas, só reduz o gap */
 @media (max-width: 1024px) {
-    .products-grid, .features-grid, .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .megamenu-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .hero-img {
-        width: 250px;
-        height: 250px;
+    .products-grid {
+        gap: 15px;
     }
 }
 
+/* Celular - mantém 4 colunas, cards menores */
 @media (max-width: 768px) {
-    .hero-text h2 {
-        font-size: 1.5rem;
+    .products-grid {
+        gap: 12px;
     }
-    .hero {
-        padding: 30px;
-        text-align: center;
+    
+    .product-card {
+        padding: 12px 8px;
     }
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
+    
+    .product-img {
+        width: 70px;
+        height: 70px;
     }
-    .hero-img {
-        width: 200px;
-        height: 200px;
+    
+    .product-img i {
+        font-size: 2rem;
     }
-    .menu-trigger {
-        width: 75px;
-        height: 75px;
+    
+    .product-card h3 {
+        font-size: 0.7rem;
+        min-height: 35px;
+        margin-bottom: 5px;
     }
-    .menu-img {
-        width: 40px;
-        height: 40px;
+    
+    .price {
+        font-size: 0.85rem;
+        margin: 5px 0;
     }
-    .megamenu {
-        width: 320px;
-        left: -100px !important;
+    
+    .old-price {
+        font-size: 0.6rem;
     }
-    .megamenu-grid {
-        grid-template-columns: repeat(2, 1fr);
+    
+    .btn-buy {
+        padding: 6px 8px;
+        font-size: 0.65rem;
+    }
+    
+    .badge {
+        font-size: 0.55rem;
+        padding: 2px 6px;
+        top: 6px;
+        left: 6px;
     }
 }
 
-@media (max-width: 640px) {
-    .products-grid, .features-grid, .footer-grid {
-        grid-template-columns: 1fr;
+/* Celular muito pequeno (menos de 480px) - ainda 4 colunas */
+@media (max-width: 480px) {
+    .products-grid {
+        gap: 8px;
     }
-    .header-grid {
-        flex-direction: column;
+    
+    .product-card {
+        padding: 8px 5px;
     }
-    .search-box {
-        max-width: 100%;
-        width: 100%;
+    
+    .product-img {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 8px;
+    }
+    
+    .product-img i {
+        font-size: 1.6rem;
+    }
+    
+    .product-card h3 {
+        font-size: 0.6rem;
+        min-height: 30px;
+    }
+    
+    .price {
+        font-size: 0.7rem;
+    }
+    
+    .old-price {
+        font-size: 0.5rem;
+    }
+    
+    .btn-buy {
+        padding: 4px 6px;
+        font-size: 0.55rem;
+    }
+    
+    .badge {
+        font-size: 0.5rem;
+        padding: 2px 4px;
+        top: 4px;
+        left: 4px;
+    }
+}
+
+/* Celular extremamente pequeno (menos de 380px) */
+@media (max-width: 380px) {
+    .products-grid {
+        gap: 6px;
+    }
+    
+    .product-img {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .product-img i {
+        font-size: 1.4rem;
+    }
+    
+    .product-card h3 {
+        font-size: 0.55rem;
+    }
+    
+    .price {
+        font-size: 0.65rem;
+    }
+    
+    .btn-buy {
+        padding: 3px 4px;
+        font-size: 0.5rem;
     }
 }
